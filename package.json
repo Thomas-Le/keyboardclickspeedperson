@@ -1,0 +1,23 @@
+{
+  "name": "keyboardclickspeedperson",
+  "version": "1.0.0",
+  "description": "Type Racing Site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thomas-Le/keyboardclickspeedperson.git"
+  },
+  "author": "Thomas Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thomas-Le/keyboardclickspeedperson/issues"
+  },
+  "homepage": "https://github.com/Thomas-Le/keyboardclickspeedperson#readme",
+  "type": "module",
+  "dependencies": {
+    "timer.js": "^1.0.4"
+  }
+}

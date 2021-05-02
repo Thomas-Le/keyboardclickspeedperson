@@ -1,0 +1,17 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+#prompt-area {
+    width: 700px;
+    height: 200px;
+    border: 1px solid #000000;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-size: 40px;
+}
+
+#type-area[type="text"] {
+    font-size: 30px;
+}
