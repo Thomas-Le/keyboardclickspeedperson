@@ -1,5 +1,44 @@
 import Race from "./race.js";
 
+async function checkWPM(currScore) {
+    let { loggedIn, user } = await checkLogin();
+
+    if (loggedIn){
+        let score = await getUserHighscore();
+        if (currScore > score) {
+            await axios({
+                method: 'post',
+                //url: 'http://localhost:4000/score',
+                url: 'https://kcsp-elsamoht.apps.cloudapps.unc.edu/score',
+                withCredentials: true,
+                data: {
+                    score: currScore
+                }
+            }).then(res => {
+                $('#msg').text("New Highscore!");
+                getHighscores();
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+    }
+}
+
+async function getUserHighscore() {
+    let score;
+    await axios({
+        method: 'get',
+        //url: 'http://localhost:4000/score',
+        url: 'https://kcsp-elsamoht.apps.cloudapps.unc.edu/score',
+        withCredentials: true
+    }).then(res => {
+        score = res.data.userHighscore;
+    }).catch(err => {
+        console.log(err);
+    });
+    return score;
+}
+
 function loadRace() {
     const prompt = "A duck walked up to the lemonade stand and he said to the man";
     let race = new Race(prompt);
@@ -23,6 +62,7 @@ function loadRace() {
 
     race.onRaceEnd(raceStatus => {
         $('#wpm').text(raceStatus.wpm);
+        checkWPM(raceStatus.wpm);
     });
 
     $('#countdown').text(race.countdownTime);
@@ -39,6 +79,31 @@ function loadRace() {
     });
 }
 
-$(function() {
-    loadRace();
-});
+async function getHighscores() {
+    $('#highscore').empty();
+    let scores;
+    await axios({
+        method: 'get',
+        //url: 'http://localhost:4000/highscore',
+        url: 'https://kcsp-elsamoht.apps.cloudapps.unc.edu/highscore',
+        withCredentials: true
+    }).then(res => {
+        scores = res.data;
+    }).catch(err => {
+        console.log(err);
+    });
+    for (let i = 0; i < scores.length; i++) {
+        $('#highscore').append(`${i+1}. ${scores[i].user} - ${scores[i].score} WPM`);
+    }
+}
+
+(async () => {
+    let { loggedIn, user } = await checkLogin();
+    $(function() {
+        if (!loggedIn) {
+            $('#msg').text('<h1>Log in to have your score go in the leaderboards!</h1>');
+        }
+        loadRace();
+        getHighscores();
+    });
+})();

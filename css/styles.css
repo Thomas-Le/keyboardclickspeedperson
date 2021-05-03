@@ -15,3 +15,7 @@ html, body {
 #type-area[type="text"] {
     font-size: 30px;
 }
+
+input {
+    display: block;
+}

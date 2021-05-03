@@ -5,7 +5,7 @@ export default class Race {
         this.currentPosition = 0; // current word in prompt array
         this.lastInput = "";
         this.listeners = {};
-        this.countdownTime = 5; // sec
+        this.countdownTime = 3; // sec
         this.currentCountdown = this.countdownTime;
         this.countdownTimer = new Timer({
             tick: 1,

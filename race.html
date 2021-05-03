@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Keyboard Click Speed Person</title>
+        <meta name="description" content="Race against your friends!">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="./node_modules/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <header>
+            <nav></nav>
+            <h1 id="msg"></h1>
+        </header>
+        <div id="countdown-wrapper">
+            <h2>Countdown: <span id="countdown">0</span> seconds</h2>
+        </div>
+        <div id="countdown-wrapper">
+            <h2>Time left: <span id="timeout">0</span> seconds</h2>
+        </div>
+        <div id="countdown-wrapper">
+            <h2><span id="wpm">0</span> WPM</h2>
+        </div>
+        <div id="prompt-area-wrapper">
+            <div id="prompt-area">
+<span id="current-word"></span>
+            </div>
+        </div>
+        <div id="type-area-wrapper">
+            <input readonly type="text" id="type-area" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div id="start-btn-wrapper">
+            <button id="start-btn" type="button">Start</button>
+        </div>
+        <div id="highscore-wrapper">
+            <h3>Current Highscores!</h3>
+            <ul id="highscore">
+
+            </ul>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./js/checkLogin.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./node_modules/timer.js/dist/timer.min.js"></script>
+    <script type="module" src="./js/setup.js"></script>
+</html>

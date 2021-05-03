@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Thomas-Le/keyboardclickspeedperson#readme",
   "type": "module",
   "dependencies": {
+    "axios": "^0.21.1",
     "timer.js": "^1.0.4"
   }
 }
