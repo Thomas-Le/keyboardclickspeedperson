@@ -93,7 +93,7 @@ async function getHighscores() {
         console.log(err);
     });
     for (let i = 0; i < scores.length; i++) {
-        $('#highscore').append(`${i+1}. ${scores[i].user} - ${scores[i].score} WPM`);
+        $('#highscore').append(`<li>${i+1}. ${scores[i].user} - ${scores[i].score} WPM</li>`);
     }
 }
 
