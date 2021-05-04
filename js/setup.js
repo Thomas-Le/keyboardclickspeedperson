@@ -101,7 +101,7 @@ async function getHighscores() {
     let { loggedIn, user } = await checkLogin();
     $(function() {
         if (!loggedIn) {
-            $('#msg').text('<h1>Log in to have your score go in the leaderboards!</h1>');
+            $('#msg').text('Log in to have your score go in the leaderboards!');
         }
         loadRace();
         getHighscores();
