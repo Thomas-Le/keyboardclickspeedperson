@@ -41,7 +41,9 @@ function loadPrompt(race) {
 
 function loadRace() {
     //const prompt = "A duck walked up to the lemonade stand and he said to the man";
-    const prompt = "A duck walked up to the lemonade stand and he said to the man, hey got any grapes and the man said no I don't have any grapes for you, I forgot the rest of the script but yea thats what the man said I think";
+    //const prompt = "A duck walked up to the lemonade stand and he said to the man, hey got any grapes and the man said no I don't have any grapes for you, I forgot the rest of the script but yea thats what the man said I think";
+    const prompt = 'A duck walked up to a lemonade stand and he said to the man, running the stand "Hey! (Bum bum bum) Got any grapes?" The man said "No we just sell lemonade.'
+
     let race = new Race(prompt);
 
     race.onCountdownTick(raceStatus => {
