@@ -42,7 +42,8 @@ function loadPrompt(race) {
 function loadRace() {
     //const prompt = "A duck walked up to the lemonade stand and he said to the man";
     //const prompt = "A duck walked up to the lemonade stand and he said to the man, hey got any grapes and the man said no I don't have any grapes for you, I forgot the rest of the script but yea thats what the man said I think";
-    const prompt = 'A duck walked up to a lemonade stand and he said to the man, running the stand "Hey! (Bum bum bum) Got any grapes?" The man said "No we just sell lemonade.'
+    //const prompt = 'A duck walked up to a lemonade stand and he said to the man, running the stand "Hey! (Bum bum bum) Got any grapes?" The man said "No we just sell lemonade.'
+    const prompt = "COMP 426 is taught by Ketan Mayer-Patel. You may know him as your former COMP 401 professor, as the director of UNC's ACM International Collegiate Programming Contest Team, or as the Director of Undergraduate Studies here in the Computer Science department."
 
     let race = new Race(prompt);
 
