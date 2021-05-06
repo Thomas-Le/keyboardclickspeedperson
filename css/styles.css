@@ -54,6 +54,8 @@ form * {
 
 #prompt-area-wrapper {
     position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 #grey-out {
@@ -88,7 +90,7 @@ form * {
     font-family: 'Roboto Mono', monospace;
     border: 1px solid #000000;
     overflow: auto;
-    font-size: 40px;
+    font-size: 25px;
 }
 
 #completed-words, #correct-chars {
