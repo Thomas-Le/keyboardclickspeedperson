@@ -2,9 +2,12 @@ export default class Race {
     constructor(textPrompt) {
         // Split prompt into array of words and add space to all elements except last
         this.prompt = textPrompt.split(" ").map((word, index, arr) => word + (index === arr.length - 1 ? '' : ' '));
-        this.currentPosition = 0; // current word in prompt array
+        this.currentWordPosition = 0; // current word in prompt array
+        this.currentCharPosition = 0;
+        this.correctChars = 0;
         this.lastInput = "";
         this.listeners = {};
+        this.raceStarted = false;
         this.countdownTime = 3; // sec
         this.currentCountdown = this.countdownTime;
         this.countdownTimer = new Timer({
@@ -45,36 +48,54 @@ export default class Race {
 
     startRace() {
         this.timeoutTimer.start(this.timeoutTime);
+        this.raceStarted = true;
     }
 
     endRace() {
         this.emit("race end");
+        this.raceStarted = false;
     }
 
     checkInput(input) {
-        this.lastInput = input;
         if (input === this.getCurrentWord()) {
             this.checkIfOver();
-            this.currentPosition++; // go on to next word
+            this.currentWordPosition++; // go on to next word
             return true;
         }
         return false;
     }
 
-    checkIfOver() {
-        if (this.currentPosition + 1 >= this.prompt.length) {
-            this.timeoutTimer.stop();
+    update(input) {
+        this.lastInput = input;
+        this.currentCharPosition = this.lastInput.length;
+        if (this.getCurrentlyCorrect()) {
+            this.correctChars = this.lastInput.length;
         }
     }
 
-    getCurrentWord() {
-        return this.prompt[this.currentPosition];
+    checkIfOver() {
+        if (this.currentWordPosition + 1 >= this.prompt.length) {
+            this.timeoutTimer.stop();
+            return true;
+        }
+        return false;
     }
 
+    getCurrentWord() {
+        const currWord = this.prompt[this.currentWordPosition];
+        if (currWord === undefined) {
+            return this.prompt[this.currentWordPosition - 1];
+        }
+        return currWord;
+    }
+
+    getCurrentlyCorrect() {
+        return this.lastInput === this.getCurrentWord().slice(0, this.lastInput.length);
+    }
 
     // ((# of char) / 5) / (elapsed time in minutes) = WPM
     getWPM() {
-        let charTyped = this.prompt.slice(0, this.currentPosition).reduce((acc, word) => acc += word.length, 0);
+        let charTyped = this.prompt.slice(0, this.currentWordPosition).reduce((acc, word) => acc += word.length, 0);
         
         // include into count correct characteres between current input and current word
         for (let i = 0; i < this.getCurrentWord().length; i++) {
@@ -99,6 +120,18 @@ export default class Race {
 
     getRaceStatus() {
         return { wpm: this.getWPM(), countdownTime: this.currentCountdown, timeoutTime: this.currentTimeout };
+    }
+
+    resetRace() {
+        this.currentWordPosition = 0; // current word in prompt array
+        this.currentCharPosition = 0;
+        this.correctChars = 0;
+        this.lastInput = "";
+        this.raceStarted = false;
+        this.countdownTime = 3; // sec
+        this.currentCountdown = this.countdownTime;
+        this.timeoutTime = Math.round(this.calculateTimeout()); // sec, also used to calculate WPM
+        this.currentTimeout = this.timeoutTime;
     }
 
     on(event, callback) {

@@ -4,41 +4,67 @@
         <meta charset="utf-8">
         <title>Keyboard Click Speed Person</title>
         <meta name="description" content="Race against your friends!">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
-        <header>
-            <nav></nav>
-        </header>
-        <h1>Welcome to Keyboard Click Speed Person</h1>
-        <h2>Test your typing speed against your classmates</h2>
+        <div id="root">
+            <header>
+                <nav></nav>
+            </header>
+            <h1>Keyboard Click Speed Person</h1>
+            <h2>Test your typing speed against your classmates</h2>
+            <h3 id="login-message"></h3>
 
-        <h1 id="loginStatus">Please login or create a new account</h1>
-        <a href="./race.html"><h2 id="race">Race now</h2></a>
+            <div class="not-logged-in hidden">
+                <div>
+                    <button id="load-login" type="button">Login</button>
+                    <button id="load-register" type="button">Register</button>
+                </div>
+            </div>
+            <div id="login-wrapper" class="hidden">
+                <h2 class="form-heading">Login</h2>
+                <form id="login">
+                    <label for="emailLogin">Email:</label>
+                    <input type="email" id="emailLogin" placeholder="Email" required/>
 
-        <h2 class="form-heading">Login Here</h2>
-        <form id="login">
-            <input type="email" id="emailLogin" placeholder="Email"/>
-            <input type="password" id="passwordLogin" placeholder="Password"/>
-            <input type="submit"/>
-        </form>
-        <h3 id="loginResponse"></h3>
+                    <label for="passwordLogin">Password:</label>
+                    <input type="password" id="passwordLogin" placeholder="Password" minlength="8" required/>
 
-        <h2 class="form-heading">Register Here</h2>
-        <form id="register">
-            <label for="passwordRegister">Email (ex: fake1245195@gmail.com)</label>
-            <input type="email" id="emailRegister" placeholder="email"/>
-            <input type="text" id="usernameRegister" placeholder="Username"/>
-            <label for="passwordRegister">At least 8 characters</label>
-            <input type="password" id="passwordRegister" placeholder="Password (8+ char)"/>
-            <input type="password" id="confirmPasswordRegister" placeholder="Confirm Password"/>
-            <input type="submit"/>
-        </form>
-        <h3 id="registerResponse"></h3>
+                    <input type="submit" value="Login"/>
+                </form>
+                <p id="loginResponse"></p>
+            </div>
+            <div id="register-wrapper" class="hidden">
+                <h2 class="form-heading">Register Here</h2>
+                <form id="register">
+                    <label for="usernameRegister">Username:</label>
+                    <input type="text" id="usernameRegister" placeholder="At least 3 characters" minlength="3" required>
+
+                    <label for="emailRegister">Email:</label>
+                    <input type="email" id="emailRegister" placeholder="fake123@gmail.com" required>
+
+                    <label for="passwordRegister">Password:</label>
+                    <input type="password" id="passwordRegister" placeholder="At least 8 characters" minlength="8" required>
+
+                    <label for="passwordConfirmationRegister">Confirm Password:</label>
+                    <input type="password" id="confirmPasswordRegister" placeholder="At least 8 characters" minlength="8" required>
+
+                    <p>Database that stores login information will be cleared after May 8, 2021</p>
+                    <p>Recommended to use random information</p>
+
+                    <input type="submit" value="Register"/>
+                </form>
+                <p id="registerResponse"></p>
+            </div>
+            <h2 class="not-logged-in hidden">Or</h2>
+            <a href="./race.html"><h2 id="race">Race Now</h2></a>
+            <h4>(Scores will only be uploaded if logged in)</h4>
+
+        </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <script src="./js/checkLogin.js"></script>
+    <script src="./js/server.js"></script>
     <script src="./js/home.js"></script>
     <script src="./js/index.js"></script>
 </html>

@@ -1,15 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Mono&family=Source+Code+Pro:wght@300&display=swap');
+
 html, body {
     padding: 0;
     margin: 0;
 }
 
+#root {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block;
+}
+
+.username {
+    font-size: larger;
+    color: #c73838;
+}
+
+form * {
+    margin: 0 auto;
+}
+
+#logout {
+    margin: 0 auto;
+}
+
+.flex-mid {
+    display: flex;
+    justify-content: center;
+}
+
+#prompt-area-wrapper {
+    position: relative;
+}
+
+#grey-out {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    z-index: 2;
+    opacity: 0.9;
+}
+
+#countdown-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+}
+
+#countdown-wrapper > h2 {
+    font-size: 46px;
+    color: white;
+}
+
 #prompt-area {
-    width: 700px;
-    height: 200px;
+    z-index: 1;
+}
+
+#prompt-area {
+    font-family: 'Roboto Mono', monospace;
     border: 1px solid #000000;
     overflow: auto;
-    white-space: pre-wrap;
     font-size: 40px;
+}
+
+#completed-words, #correct-chars {
+    color: rgb(2, 218, 2);
+}
+
+#incorrect-chars {
+    color: red;
+}
+
+#correct-chars, #incorrect-chars, #rest-chars {
+    text-decoration-line: underline;
+}
+
+#highscore-wrapper {
+    flex-direction: column;
+}
+
+#highscore {
+    text-align: center;
+    list-style: none;
 }
 
 #type-area[type="text"] {
@@ -22,4 +122,9 @@ input {
 
 #highscores li {
     display: block;
+}
+
+#countdown {
+    color: red;
+    font-size: 60px;
 }
