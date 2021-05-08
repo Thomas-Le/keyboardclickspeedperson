@@ -64,7 +64,7 @@ form * {
     width: 100%;
     background-color: rgb(0, 0, 0);
     z-index: 2;
-    opacity: 0.9;
+    opacity: 0.4;
 }
 
 #countdown-wrapper {
@@ -91,6 +91,7 @@ form * {
     border: 1px solid #000000;
     overflow: auto;
     font-size: 25px;
+    min-height: 100px;
 }
 
 #completed-words, #correct-chars {
@@ -118,6 +119,10 @@ form * {
     font-size: 30px;
 }
 
+#type-area {
+    width: 80%;
+}
+
 input {
     display: block;
 }
@@ -129,4 +134,8 @@ input {
 #countdown {
     color: red;
     font-size: 60px;
+}
+
+#current-user {
+    color: red;
 }

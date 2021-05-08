@@ -1,5 +1,5 @@
-const backendURL = 'https://kcsp-elsamoht.apps.cloudapps.unc.edu';
-//const backendURL = 'http://localhost:4000'
+//const backendURL = 'https://kcsp-elsamoht.apps.cloudapps.unc.edu';
+const backendURL = 'http://localhost:4000'
 
 async function registerUser(username, email, password, passwordConfirmation) {
     try {

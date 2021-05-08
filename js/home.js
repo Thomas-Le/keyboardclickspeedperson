@@ -7,9 +7,10 @@
             loginMsg.text(`Welcome `);
             loginMsg.append(`<span class="username">${user}</span>`);
             loginMsg.show();
+            $('#race-multi').removeClass('hidden');
         } else {
             $root.find('.not-logged-in').removeClass('hidden');
-            $root.find('#login-message').text(`Login or register for your highscore to be uploaded!`);
+            $root.find('#login-message').text(`Login or register for highscores to be uploaded and be able to play multiplayer!`);
         }
 
         $root.on('click', '#load-login', function() {

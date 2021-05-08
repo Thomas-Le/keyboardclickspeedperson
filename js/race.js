@@ -59,7 +59,6 @@ export default class Race {
     checkInput(input) {
         if (input === this.getCurrentWord()) {
             this.checkIfOver();
-            this.currentWordPosition++; // go on to next word
             return true;
         }
         return false;
@@ -74,7 +73,8 @@ export default class Race {
     }
 
     checkIfOver() {
-        if (this.currentWordPosition + 1 >= this.prompt.length) {
+        this.currentWordPosition++;
+        if (this.currentWordPosition >= this.prompt.length) {
             this.timeoutTimer.stop();
             return true;
         }
@@ -119,10 +119,13 @@ export default class Race {
     }
 
     getRaceStatus() {
-        return { wpm: this.getWPM(), countdownTime: this.currentCountdown, timeoutTime: this.currentTimeout };
+        return { wpm: this.getWPM(), countdownTime: this.currentCountdown, timeoutTime: this.currentTimeout, percentComplete: (this.currentWordPosition / this.prompt.length) * 100 };
     }
 
-    resetRace() {
+    resetRace(newPrompt) {
+        if (newPrompt) {
+            this.prompt = newPrompt.split(" ").map((word, index, arr) => word + (index === arr.length - 1 ? '' : ' '));
+        }
         this.currentWordPosition = 0; // current word in prompt array
         this.currentCharPosition = 0;
         this.correctChars = 0;
@@ -132,6 +135,7 @@ export default class Race {
         this.currentCountdown = this.countdownTime;
         this.timeoutTime = Math.round(this.calculateTimeout()); // sec, also used to calculate WPM
         this.currentTimeout = this.timeoutTime;
+        this.emit("new prompt");
     }
 
     on(event, callback) {
@@ -163,6 +167,10 @@ export default class Race {
 
     onRaceEnd(callback) {
         this.on("race end", callback);
+    }
+
+    onNewPrompt(callback) {
+        this.on("new prompt", callback);
     }
 
     emit(event) {

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Keyboard Click Speed Person</title>
+        <meta name="description" content="Race against your friends!">
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+    <body>
+        <div id="root">
+            <header>
+                <nav></nav>
+                <h1 id="msg"></h1>
+                <h2 id="hs-msg"></h2>
+            </header>
+            <div id="rooms-wrapper" class="hidden">
+                <button input="button" id="create-room">Create Room</button>
+                <div id="room-list">
+
+                </div>
+            </div>
+            <div id="race" class="hidden">
+                <div id="race-scores">
+                </div>
+                <div id="timeout-wrapper">
+                    <h2>Time left: <span id="timeout">0</span> seconds</h2>
+                </div>
+                <div id="wpm-wrapper">
+                    <h2><span id="wpm">0</span> WPM</h2>
+                </div>
+                <div id="prompt-area-wrapper" class="flex-mid">
+                    <div id="prompt-area">
+<span id        ="completed-words"></span><span id="correct-chars"></span><span id="incorrect-chars"></span><span id="rest-chars"></span><span id="new-words"></span>
+                    </div>
+                    <div id="grey-out"></div>
+                    <div id="countdown-wrapper">
+                        <h2>Countdown: <span id="countdown">0</span> seconds</h2>
+                    </div>
+                </div>
+                <div id="type-area-wrapper" class="flex-mid">
+                    <input type="text" id="type-area" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onpaste="return false" ondrop="return false">
+                </div>
+                <div id="end-options-btn-wrapper" class="flex-mid hidden">
+                    <button id="new-prompt-btn" type="button">New Prompt</button>
+                    <button id="restart-btn" type="button">Restart</button>
+                </div>
+                <div id="highscore-wrapper" class="flex-mid hidden">
+                    <h3>Race Results!</h3>
+                    <ul id="highscore">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+    <script src="./js/server.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./node_modules/timer.js/dist/timer.min.js"></script>
+    <script type="module" src="./js/setup_multi.js"></script>
+</html>
