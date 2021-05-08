@@ -5,7 +5,7 @@
         if (loggedIn) {
         } else {
         }
-        $('nav').load('./html/navigation.html', function() {
+        $('nav').load('./html/navigation.html', async function() {
             if (loggedIn) {
                 $('nav').append('<input type="button" value="Log Out" id="logout"/>');
                 $root.on('click', '#logout', async function() {
