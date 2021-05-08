@@ -71,7 +71,7 @@ function loadRace(socket) {
         $('#timeout').text(raceStatus.timeoutTime);
         $('#wpm').text(raceStatus.wpm);
 
-        $(`#current-user>.user-score`).text(raceStatus.percentComplete);
+        $(`#current-user>.user-score`).text(Math.round(raceStatus.percentComplete * 100) / 100);
         $(`#current-user>.user-wpm`).text(raceStatus.wpm);
 
         socket.emit('my-stats', [raceStatus.wpm, raceStatus.percentComplete]); // inform server of stats
