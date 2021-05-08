@@ -99,7 +99,7 @@ function loadRace() {
         }
     });
     $('#type-area').on('click', async function() {
-        if (!race.raceStarted) {
+        if (!race.raceStarted && race.currentWordPosition != race.prompt.length) {
             race.beginCountdown();
         }
     });
