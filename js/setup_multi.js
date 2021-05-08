@@ -165,7 +165,7 @@ function updatePlayerStats(playerID, wpm, percentComplete) {
 }
 
 function setupSocket(user) {
-    const socket = io("http://localhost:4000", {
+    const socket = io(backendURL, {
         withCredentials: true,
         query: {
             username: user
