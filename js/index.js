@@ -9,7 +9,7 @@
             if (loggedIn) {
                 $('nav').append('<input type="button" value="Log Out" id="logout"/>');
                 $root.on('click', '#logout', function() {
-                    logout();
+                    await logout();
                     location.reload();
                 });
             }
