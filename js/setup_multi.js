@@ -85,7 +85,7 @@ function loadRace(socket) {
         $('#wpm').text(raceStatus.wpm);
         $('#timeout-wrapper>h2').contents().get(2).nodeValue="";
 
-        $(`#current-user>.user-score`).text(raceStatus.percentComplete);
+        $(`#current-user>.user-score`).text(Math.round(raceStatus.percentComplete * 100)/100);
         $(`#current-user>.user-wpm`).text(raceStatus.wpm);
         $('#type-area').attr('placeholder', 'Waiting for other players to finish...');
 
